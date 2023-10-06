@@ -20,7 +20,7 @@ export class AppComponent {
     height: '300'
   }
 
-  basicValue = {
+  value = {
     width: '1024',
     height: '1000',
     widthRatio: '3',

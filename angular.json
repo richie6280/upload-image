@@ -163,6 +163,46 @@
           }
         }
       }
+    },
+    "uploadImage": {
+      "projectType": "library",
+      "root": "projects/upload-image",
+      "sourceRoot": "projects/upload-image/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/upload-image/tsconfig.lib.json",
+            "project": "projects/upload-image/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/upload-image/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/upload-image/src/test.ts",
+            "tsConfig": "projects/upload-image/tsconfig.spec.json",
+            "karmaConfig": "projects/upload-image/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/upload-image/tsconfig.lib.json",
+              "projects/upload-image/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }},
   "defaultProject": "UI-component"
 }

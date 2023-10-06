@@ -1,0 +1,49 @@
+<div #container class="container" style="background-image: url({{imageUrl}})" *ngIf="isShow">
+
+    <div class="tooltip">
+        <span class="material-icons-sharp hint" [ngClass]="imageUrl ? 'hint-uploaded' : ''" *ngIf="!imageUrl">info
+            <div class="hint-content">
+                <div>尺寸：{{ toolTipValue.width }} x {{ toolTipValue.height }}px ({{ toolTipValue.widthRatio }}:{{ toolTipValue.heightRatio }})</div>
+                <div>格式：<span *ngFor="let format of formatArray">{{ format }}</span></div>
+                <div>檔案大小：{{ toolTipValue.fileSize }}MB以下</div>
+            </div>
+        </span>
+    </div>
+
+    <input id="upload" type="file" (click)="onClick($event)" (change)="onImageChange($event.target.files[0])" accept="image/jpeg, image/x-png" 
+    style="display:none;">
+    
+    <div *ngIf="!imageUrl; else showUpload" class="txt"
+        onclick="document.getElementById('upload').click()"
+        (drop)="onDrop($event)"
+        (dragover)="onDragover($event)"
+        (dragleave)="onDragleave($event)">
+        <div class="icon">
+            <span class="material-icons-sharp">add_photo_alternate</span>
+            <span>上傳圖片</span>
+        </div>
+    </div>
+    
+    <ng-template #showUpload>
+        <div class="uploaded-hover">
+            <div class="tooltip">
+                <span class="material-icons-sharp hint" [ngClass]="imageUrl ? 'hint-uploaded' : ''" *ngIf="imageUrl">info
+                    <div class="hint-content">
+                        <div>尺寸：{{ toolTipValue.width }} x {{ toolTipValue.height }}px ({{ toolTipValue.widthRatio }}:{{ toolTipValue.heightRatio }})</div>
+                        <div>格式：<span *ngFor="let format of formatArray">{{ format }}</span></div>
+                        <div>檔案大小：{{ toolTipValue.fileSize }}MB以下</div>
+                    </div>
+                </span>
+            </div>
+            <div class="action">
+                <div class="reupload">
+                    <span class="material-icons-sharp" (click)="onClick($event)" onclick="document.getElementById('upload').click()">add_photo_alternate</span>
+                </div>
+                <div class="delete">
+                    <span class="material-icons-sharp" (click)="onDelete($event)">delete</span>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+</div>

@@ -1,8 +1,15 @@
 <div class="container">
-    <image240x240
+    <!-- <image240x240
     [componentSize]="size"
     [toolTipValue]="basicValue"
     [imageUrl]="url"
     (uploadImage)="uploadedImg($event)"
-    ></image240x240>
+    ></image240x240> -->
+    <upload-image
+    [componentSize]="size"
+    [toolTipValue]="value"
+    [imageUrl]="url"
+    (uploadImage)="uploadedImg($event)"
+    ></upload-image>
 </div>
+

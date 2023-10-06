@@ -1,11 +1,11 @@
 import { Component, ElementRef, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'image240x240',
-  templateUrl: './image240x240.component.html',
-  styleUrls: ['./image240x240.component.scss']
+  selector: 'upload-image',
+  templateUrl: './upload-image.component.html',
+  styleUrls: ['./upload-image.component.scss']
 })
-export class Image240x240Component implements OnInit, OnChanges {
+export class UploadImageComponent implements OnInit, OnChanges {
 
   @ViewChild('container') container!: ElementRef<HTMLDivElement>;
 
@@ -45,6 +45,7 @@ export class Image240x240Component implements OnInit, OnChanges {
   @Output() uploadImage = new EventEmitter<any>();
 
   constructor() {
+    window['image'] = this;
   }
 
   ngOnInit(): void {
@@ -77,6 +78,7 @@ export class Image240x240Component implements OnInit, OnChanges {
     };
     
     setTimeout(() => {
+      console.log(this.container)
       this.container.nativeElement.style.width = `${this.componentSize.width}px`;
       this.container.nativeElement.style.height = `${this.componentSize.height}px`;
     });
@@ -88,12 +90,12 @@ export class Image240x240Component implements OnInit, OnChanges {
     };
   }
 
-  ngAfterContentInit() {
-    if (this.container) {
-      this.container.nativeElement.style.width = `${this.componentWidth}px`;
-      this.container.nativeElement.style.height = `${this.componentHeight}px`;
-    };
-  }
+  // ngAfterContentInit() {
+  //   if (this.container) {
+  //     this.container.nativeElement.style.width = `${this.componentWidth}px`;
+  //     this.container.nativeElement.style.height = `${this.componentHeight}px`;
+  //   };
+  // }
 
   onClick(event) {
     event.target.value = '';
@@ -150,5 +152,4 @@ export class Image240x240Component implements OnInit, OnChanges {
     e.stopPropagation();
     this.container.nativeElement.classList.remove('dragover');
   }
-
 }

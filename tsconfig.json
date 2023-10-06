@@ -19,6 +19,10 @@
       "image240x240": [
         "dist/image240x240/image240x240",
         "dist/image240x240"
+      ],
+      "upload-image": [
+        "dist/upload-image/upload-image",
+        "dist/upload-image"
       ]
     }
   }
